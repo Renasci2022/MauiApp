@@ -1,24 +1,36 @@
-﻿namespace SimpleApp;
+﻿using SimpleApp.Data;
+using SimpleApp.Models;
+
+namespace SimpleApp;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	private readonly DatabaseManager _databaseManager;
 
 	public MainPage()
 	{
 		InitializeComponent();
+		_databaseManager = new DatabaseManager();
+		LoadPosts();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	private void LoadPosts()
 	{
-		count++;
+		var posts = _databaseManager.GetPosts();
+		BindingContext = new MainViewModel { Posts = posts };
+	}
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+	private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		if (e.CurrentSelection.FirstOrDefault() is Post currentSelection)
+		{
+			var detailsPage = new DetailsPage(currentSelection.Content, currentSelection.ImageUrl);
+			Navigation.PushAsync(detailsPage);
+		}
 	}
 }
 
+public class MainViewModel
+{
+	public List<Post> Posts { get; set; }
+}

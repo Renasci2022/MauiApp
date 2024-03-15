@@ -345,6 +345,11 @@ FodyWeavers.xsd
 *.suo.~*
 *.user.~*
 *.userosscache.~*
-*.sln.docstates.~*
+*.sln.docstates.~
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,csharp,dotnetcore,maui
