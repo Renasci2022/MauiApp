@@ -10,7 +10,15 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+		BindingContext = new MainViewModel();
+
 		_databaseManager = new DatabaseManager();
+		LoadPosts();
+	}
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
 		LoadPosts();
 	}
 
@@ -27,5 +35,10 @@ public partial class MainPage : ContentPage
 			var detailsPage = new DetailsPage(currentSelection.Content, currentSelection.ImageUrl ?? string.Empty);
 			Navigation.PushAsync(detailsPage);
 		}
+	}
+
+	private async void OnAddClicked(object sender, EventArgs e)
+	{
+		await Navigation.PushAsync(new AddPostPage());
 	}
 }

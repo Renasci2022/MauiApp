@@ -18,4 +18,10 @@ public class DatabaseManager
     {
         return _dbContext.Posts.ToList();
     }
+
+    public void AddPost(Post post)
+    {
+        _dbContext.Posts.Add(post);
+        _dbContext.SaveChanges();
+    }
 }
