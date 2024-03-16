@@ -22,15 +22,10 @@ public partial class MainPage : ContentPage
 
 	private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		if (e.CurrentSelection.FirstOrDefault() is Post currentSelection)
+		if (e.CurrentSelection.FirstOrDefault() is Post { Content: { } } currentSelection)
 		{
-			var detailsPage = new DetailsPage(currentSelection.Content, currentSelection.ImageUrl);
+			var detailsPage = new DetailsPage(currentSelection.Content, currentSelection.ImageUrl ?? string.Empty);
 			Navigation.PushAsync(detailsPage);
 		}
 	}
-}
-
-public class MainViewModel
-{
-	public List<Post> Posts { get; set; }
 }

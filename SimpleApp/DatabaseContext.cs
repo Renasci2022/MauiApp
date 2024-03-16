@@ -9,7 +9,8 @@ public class DatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string dbPath = Path.Combine(FileSystem.AppDataDirectory, "YourDatabaseName.db");
+        string dbPath = Path.Combine(FileSystem.AppDataDirectory, "MauiAppDatabase.db");
+        Directory.CreateDirectory(Path.GetDirectoryName(dbPath) ?? throw new InvalidOperationException("The database directory cannot be null."));
         optionsBuilder.UseSqlite($"Filename={dbPath}");
     }
 }
