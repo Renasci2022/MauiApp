@@ -4,10 +4,11 @@ namespace SimpleApp;
 
 public partial class DetailsPage : ContentPage
 {
-    public DetailsPage(string content, string imageUrl)
+    public DetailsPage(string title, string content)
     {
         InitializeComponent();
-        postContent.Text = content;
-        postImage.Source = imageUrl;
+
+        titleLabel.Text = title;
+        contentLabel.Text = content;
     }
 }

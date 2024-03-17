@@ -6,13 +6,9 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
-            <Label Text="Content" FontSize="Medium"/>
-            <Editor x:Name="contentEntry" Placeholder="Enter post content" AutoSize="TextChanges" />
-
-            <Label Text="Image URL" FontSize="Medium"/>
-            <Entry x:Name="imageUrlEntry" Placeholder="Enter image URL" />
-
-            <Button Text="Save" Clicked="OnSaveClicked"/>
+            <Entry x:Name="titleEntry" Placeholder="Title" />
+            <Editor x:Name="contentEditor" Placeholder="Content" HeightRequest="200" />
+            <Button Text="Save Post" Clicked="OnSaveClicked" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

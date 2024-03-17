@@ -9,10 +9,10 @@
                         SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10" RowDefinitions="Auto,Auto">
-                        <Image Grid.Row="0" Source="{Binding ImageUrl}" HeightRequest="200" Aspect="AspectFill"/>
-                        <Label Grid.Row="1" Text="{Binding Content}" FontSize="Medium"/>
-                    </Grid>
+                    <StackLayout>
+                        <Label Text="{Binding Title}" FontAttributes="Bold" />
+                        <Label Text="{Binding Context}" />
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

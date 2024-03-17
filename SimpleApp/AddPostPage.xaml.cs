@@ -16,8 +16,8 @@ public partial class AddPostPage : ContentPage
     {
         var post = new Post
         {
-            Content = contentEntry.Text,
-            ImageUrl = imageUrlEntry.Text
+            Title = titleEntry.Text,
+            Content = contentEditor.Text
         };
 
         _databaseManager.AddPost(post);

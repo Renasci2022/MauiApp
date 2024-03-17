@@ -32,7 +32,7 @@ public partial class MainPage : ContentPage
 	{
 		if (e.CurrentSelection.FirstOrDefault() is Post { Content: { } } currentSelection)
 		{
-			var detailsPage = new DetailsPage(currentSelection.Content, currentSelection.ImageUrl ?? string.Empty);
+			var detailsPage = new DetailsPage(currentSelection.Title, currentSelection.Content);
 			Navigation.PushAsync(detailsPage);
 		}
 	}
