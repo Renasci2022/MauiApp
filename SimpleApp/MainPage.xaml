@@ -4,21 +4,70 @@
              xmlns:models="clr-namespace:SimpleApp.Models"
              x:Class="SimpleApp.MainPage"
              x:DataType="models:MainViewModel">
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Posts}"
+
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Label Grid.Row="0" 
+               Text="Home Page"
+               FontSize="Large"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="10" />
+
+        <!-- Separator -->
+        <BoxView Grid.Row="1"
+                 BackgroundColor="Gray"
+                 HeightRequest="1"
+                 HorizontalOptions="Fill"
+                 Margin="10,0" />
+
+        <!-- Posts -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Posts}"
+                        Margin="15"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedPost}"
                         SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Post">
-                    <StackLayout>
-                        <Label Text="{Binding Title}" FontAttributes="Bold" />
-                        <Label Text="{Binding Content}" />
-                    </StackLayout>
+                    <Frame Padding="10"
+                           Margin="5"
+                           BackgroundColor="LightGray"
+                           InputTransparent="True">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <StackLayout>
+                            <Label Text="{Binding Title}" 
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Content}" 
+                                   FontSize="Small" />
+                        </StackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Button Text="Add Post" Clicked="OnAddClicked"/>
-    </VerticalStackLayout>
+        
+        <!-- Add Post Button -->
+        <Button Grid.Row="3"
+            Text="Add Post"
+            Clicked="OnAddClicked"
+            HorizontalOptions="Fill"
+            Margin="10" />
+    </Grid>
 </ContentPage>

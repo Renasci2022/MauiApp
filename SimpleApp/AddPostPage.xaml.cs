@@ -10,6 +10,7 @@ public partial class AddPostPage : ContentPage
     public AddPostPage()
     {
         InitializeComponent();
+        Shell.SetNavBarIsVisible(this, false);
     }
 
     private async void OnSaveClicked(object sender, EventArgs e)

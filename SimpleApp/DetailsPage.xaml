@@ -4,13 +4,28 @@
              x:Class="SimpleApp.DetailsPage">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="15">
-            <Label x:Name="titleLabel"
-                FontSize="Title"
-                FontAttributes="Bold"
-                HorizontalOptions="Center" />
-            <Label x:Name="contentLabel"
-                FontSize="Body" />
-        </VerticalStackLayout>
+        <Frame Margin="20" Padding="15" CornerRadius="10" BackgroundColor="WhiteSmoke">
+            <VerticalStackLayout>
+
+                <!-- Title -->
+                <Label x:Name="titleLabel"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       Margin="0,0,0,10"
+                       HorizontalOptions="Center"
+                       TextColor="DarkBlue" />
+
+                <!-- Divider -->
+                <BoxView HeightRequest="1"
+                         BackgroundColor="Gray"
+                         Margin="0,0,0,10" />
+                
+                <!-- Content -->
+                <Label x:Name="contentLabel"
+                       FontSize="Body"
+                       TextColor="Gray" />
+
+            </VerticalStackLayout>
+        </Frame>
     </ScrollView>
 </ContentPage>
