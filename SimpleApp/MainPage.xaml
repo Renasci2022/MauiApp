@@ -19,11 +19,12 @@
                FontSize="Large"
                FontAttributes="Bold"
                HorizontalOptions="Center"
-               Margin="10" />
+               Margin="10"
+               TextColor="{AppThemeBinding Light=Black, Dark=White}" />
 
         <!-- Separator -->
         <BoxView Grid.Row="1"
-                 BackgroundColor="Gray"
+                 BackgroundColor="{AppThemeBinding Light=Gray, Dark=White}"
                  HeightRequest="1"
                  HorizontalOptions="Fill"
                  Margin="10,0" />
@@ -31,6 +32,7 @@
         <!-- Posts -->
         <CollectionView Grid.Row="2"
                         ItemsSource="{Binding Posts}"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
                         Margin="15"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedPost}"
@@ -39,14 +41,14 @@
                 <DataTemplate x:DataType="models:Post">
                     <Frame Padding="10"
                            Margin="5"
-                           BackgroundColor="LightGray"
+                           BackgroundColor="{AppThemeBinding Light=LightGray, Dark=Black}"
                            InputTransparent="True">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="Selected">
                                     <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=LightBlue, Dark=DarkBlue}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -54,9 +56,12 @@
 
                         <StackLayout>
                             <Label Text="{Binding Title}" 
-                                   FontAttributes="Bold" />
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                             <Label Text="{Binding Content}" 
-                                   FontSize="Small" />
+                                   FontSize="Small"
+                                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </StackLayout>
                     </Frame>
                 </DataTemplate>

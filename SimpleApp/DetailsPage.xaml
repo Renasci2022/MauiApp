@@ -4,7 +4,8 @@
              x:Class="SimpleApp.DetailsPage">
 
     <ScrollView>
-        <Frame Margin="20" Padding="15" CornerRadius="10" BackgroundColor="WhiteSmoke">
+        <Frame Margin="20" Padding="15" CornerRadius="10"
+               BackgroundColor="{AppThemeBinding Light=WhiteSmoke, Dark=Black}">
             <VerticalStackLayout>
 
                 <!-- Title -->
@@ -13,7 +14,7 @@
                        FontAttributes="Bold"
                        Margin="0,0,0,10"
                        HorizontalOptions="Center"
-                       TextColor="DarkBlue" />
+                       TextColor="{AppThemeBinding Light=DarkBlue, Dark=White}" />
 
                 <!-- Divider -->
                 <BoxView HeightRequest="1"
@@ -23,7 +24,7 @@
                 <!-- Content -->
                 <Label x:Name="contentLabel"
                        FontSize="Body"
-                       TextColor="Gray" />
+                       TextColor="{AppThemeBinding Light=DarkBlue, Dark=White}" />
 
             </VerticalStackLayout>
         </Frame>
