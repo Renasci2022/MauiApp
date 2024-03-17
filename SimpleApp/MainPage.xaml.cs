@@ -30,9 +30,12 @@ public partial class MainPage : ContentPage
 
 	private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		if (e.CurrentSelection.FirstOrDefault() is Post { Content: { } } currentSelection)
+		if (e.CurrentSelection.FirstOrDefault() is Post selectedPost)
 		{
-			var detailsPage = new DetailsPage(currentSelection.Title, currentSelection.Content);
+			var title = selectedPost.Title ?? "No title";
+			var content = selectedPost.Content ?? String.Empty;
+
+			var detailsPage = new DetailsPage(title, content);
 			Navigation.PushAsync(detailsPage);
 		}
 	}
